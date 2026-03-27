@@ -164,6 +164,25 @@ body {
   }
 }
 
+.discord-btn {
+  background: linear-gradient(180deg, #5865f2 0%, #3d4fd6 50%, #2d3db8 100%);
+  border-color: #7983f5;
+  box-shadow:
+    0 6px 0 #1e2a8a,
+    0 8px 20px rgba(0, 0, 0, 0.4),
+    0 0 25px rgba(88, 101, 242, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.discord-btn:hover {
+  background: linear-gradient(180deg, #6875f5 0%, #4d5fe6 50%, #3d4fd6 100%);
+  box-shadow:
+    0 6px 0 #1e2a8a,
+    0 8px 20px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(88, 101, 242, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
 /* ====== END CTA SECTION ====== */
 
 /* Testimonials Container */
@@ -418,6 +437,13 @@ audio::-webkit-media-controls-time-remaining-display {
   <div class="cta-section">
     <a data-eo-form-toggle-id="5395ac3c-28b3-11f1-b088-3dee128eaf66" href="#" class="cta-main-btn">
       🎮 Want to take Korean Class? 🎮
+    </a>
+  </div>
+
+  <!-- Discord Button (shown after form submit) -->
+  <div class="cta-section" id="discord-section" style="display:none;">
+    <a href="https://discord.gg/exP76rCz7P" target="_blank" class="cta-main-btn discord-btn">
+      💬 Join the Free Discord While You Wait!
     </a>
   </div>
   
@@ -1010,6 +1036,22 @@ document.querySelectorAll('audio').forEach(audio => {
   audio.addEventListener('ended', () => {
     card.classList.remove('playing');
   });
+});
+</script>
+
+<script>
+// Show Discord button after EOCampaign form is submitted
+window.addEventListener('message', function(e) {
+  if (e.data && (e.data.type === 'eo-form-submitted' || e.data === 'eo-form-submitted')) {
+    document.getElementById('discord-section').style.display = 'block';
+    document.getElementById('discord-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
+
+// Also listen for EOCampaign's custom event on the document
+document.addEventListener('eoFormSubmitted', function() {
+  document.getElementById('discord-section').style.display = 'block';
+  document.getElementById('discord-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
 </script>
 
