@@ -1039,22 +1039,6 @@ document.querySelectorAll('audio').forEach(audio => {
 });
 </script>
 
-<script>
-// Show Discord button after EOCampaign form is submitted
-window.addEventListener('message', function(e) {
-  if (e.data && (e.data.type === 'eo-form-submitted' || e.data === 'eo-form-submitted')) {
-    document.getElementById('discord-section').style.display = 'block';
-    document.getElementById('discord-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-});
-
-// Also listen for EOCampaign's custom event on the document
-document.addEventListener('eoFormSubmitted', function() {
-  document.getElementById('discord-section').style.display = 'block';
-  document.getElementById('discord-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
-});
-</script>
-
 <script defer src="https://eocampaign1.com/form/5395ac3c-28b3-11f1-b088-3dee128eaf66.js" data-form="5395ac3c-28b3-11f1-b088-3dee128eaf66"></script>
 </body>
 </html>
